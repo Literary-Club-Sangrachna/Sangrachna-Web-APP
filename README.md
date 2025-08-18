@@ -31,5 +31,3 @@ Contributions and suggestions are welcome.
 
 ## Connect with Us 📲  
 - College Website: [www.niet.co.in](https://www.niet.co.in) 
-- Instagram: [@sangrachna_niet](https://instagram.com/)  
-- College Website: [www.niet.co.in](https://www.niet.co.in)  
