@@ -23,7 +23,6 @@ export default function PhotoCarousel({
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
   const [isAnimating, setIsAnimating] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const next = () => {
     if (isAnimating || images.length < 2) return;
@@ -71,13 +70,11 @@ export default function PhotoCarousel({
         onTouchEnd={handleTouchEnd}
         style={{ height: "400px" }}
       >
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full flex items-center justify-center">
           {/* Current Slide */}
-          <motion.img
+          <motion.div
             key={`current-${current}`}
-            src={images[current].src}
-            alt={images[current].alt}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 flex items-center justify-center"
             initial={{ x: "0%" }}
             animate={{
               x: isAnimating ? (direction === 1 ? "-100%" : "100%") : "0%",
@@ -86,31 +83,37 @@ export default function PhotoCarousel({
               duration,
               ease: [0.43, 0.13, 0.23, 0.96],
             }}
-          />
+          >
+            <img
+              src={images[current].src}
+              alt={images[current].alt}
+              className="max-h-full max-w-full object-contain drop-shadow-xl"
+            />
+          </motion.div>
 
-          {/* Incoming Slide (Smooth Zoom + Fade + Slide) */}
+          {/* Incoming Slide (Slide only, no zoom/fade) */}
           {isAnimating && (
-            <motion.img
+            <motion.div
               key={`incoming-${incomingIndex}-${direction}`}
-              src={images[incomingIndex].src}
-              alt={images[incomingIndex].alt}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 flex items-center justify-center"
               initial={{
                 x: direction === 1 ? "100%" : "-100%",
-                scale: 1,
-                opacity: 0,
               }}
               animate={{
                 x: "0%",
-                scale: 1.03,
-                opacity: 1,
               }}
               transition={{
                 duration,
                 ease: [0.43, 0.13, 0.23, 0.96],
               }}
               onAnimationComplete={handleIncomingComplete}
-            />
+            >
+              <img
+                src={images[incomingIndex].src}
+                alt={images[incomingIndex].alt}
+                className="max-h-full max-w-full object-contain drop-shadow-xl"
+              />
+            </motion.div>
           )}
         </div>
 

@@ -114,9 +114,13 @@ const Library = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Kitabghar
-          </h1>
+          <div className="flex justify-center mb-4">
+  <img 
+    src="/Kitabghar-logo.svg" 
+    alt="Kitabghar Logo" 
+    className="h-16 md:h-24 lg:h-28 w-auto object-contain"
+  />
+</div>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
             Sangrachna Kitabghar is our digital library initiative that serves as a bridge between readers and writers, fostering a culture of continuous learning and intellectual growth.
           </p>

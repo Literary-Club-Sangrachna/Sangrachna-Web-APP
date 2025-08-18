@@ -12,10 +12,10 @@ import PhotoCarousel from "@/components/PhotoCarousel";
 
 // ✅ Moved carousel images array here
 const carouselImages = [
-  { src: "https://images.unsplash.com/photo-1754851541354-081c37f1316c?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Event 1" },
-  { src: "https://images.unsplash.com/photo-1752061567306-79d3db813164?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDd8Q0R3dXdYSkFiRXd8fGVufDB8fHx8fA%3D%3D", alt: "Event 2" },
-  { src: "https://images.unsplash.com/photo-1754851541354-081c37f1316c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDZ8Q0R3dXdYSkFiRXd8fGVufDB8fHx8fA%3D%3D", alt: "Event 3" },
-  { src: "https://images.unsplash.com/photo-1753454116483-417bbc0a975c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDEzfENEd3V3WEpBYkV3fHxlbnwwfHx8fHw%3D", alt: "Event 4" },
+  { src: "/IMG_0340.JPG", alt: "Event 1" },
+  { src: "/IMG_5618.JPG", alt: "Event 2" },
+  { src: "/DSC_0916.JPG", alt: "Event 3" },
+  { src: "/DSC_0759.JPG", alt: "Event 4" },
 ];
 
 
@@ -221,9 +221,13 @@ const Index = () => {
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              A Library by Sangrachna
-            </h2>
+            <div className="flex justify-center mb-4">
+  <img 
+    src="/Kitabghar-logo.svg" 
+    alt="Kitabghar Logo" 
+    className="h-16 md:h-24 lg:h-28 w-auto object-contain"
+  />
+</div>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Sangrachna Kitabghar is a unique library initiative by the Sangrachna Club. Sangrachna Kitabghar is a platform that aims to promote reading and knowledge-sharing among the community. It serves as a bridge between readers and writers, fostering a culture of continuous learning and intellectual growth. The library of the club also functions as an archive for the club's publications, chronicling the literary journey of its members and preserving their creative contributions for future generations.
             </p>
