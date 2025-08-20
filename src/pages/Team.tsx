@@ -30,6 +30,25 @@ const Team = () => {
     }
   };
 
+const localImages: Record<string, string> = {
+  "शुभम मिश्रा": "/TEAM/SHUBHAM.jpg",
+  "ओम सिंह": "/TEAM/OM.jpg",
+  "माधवी द्विवेदी": "/TEAM/Madhavi.jpg",
+  "तुषार तेवतिया": "/TEAM/TUSHAR.jpg",
+  "प्रत्यक्ष शुक्ला": "/TEAM/PRATYKSH.jpg",
+  "आरुषि बडगल": "/TEAM/AARUSHI.jpg",
+  "उर्वशी दीक्षित": "/TEAM/URVASHI.jpg",
+  "पायल सेंगर": "/TEAM/PAYAL.jpg",
+  "मानस शर्मा": "/TEAM/MANAS.jpg",
+  "दक्षित झा": "/TEAM/DAKSHIT.jpg",
+  "शिवानी राय": "/TEAM/SHIVANI.jpg",
+  "आदित्य जुयाल": "/TEAM/ADITYA.jpg",
+  "अविनाश वर्मा": "/TEAM/AVINASH.jpg",
+  "भूमि वर्मा": "/TEAM/BHOOMI.jpg",
+};
+
+
+
   // Group team members by hierarchy
   const president = teamMembers.find((member) => member.position === "President");
   const vicePresidents = teamMembers.filter((member) => member.position === "Vice President");
@@ -43,14 +62,18 @@ const Team = () => {
       )
   );
 
-  // Component for profile image
-  const ProfileImage = ({ member, size }: { member: any; size: string }) => (
+  const ProfileImage = ({ member, size }: { member: any; size: string }) => {
+  // Prefer local image if available, else Supabase, else fallback
+  const imageSrc = localImages[member.name] || member.image_url;
+
+
+  return (
     <div
       className={`${size} rounded-full mx-auto overflow-hidden bg-primary/10 flex items-center justify-center`}
     >
-      {member.image_url ? (
+      {imageSrc ? (
         <img
-          src={member.image_url}
+          src={imageSrc}
           alt={member.name}
           className="w-full h-full object-cover"
         />
@@ -61,6 +84,9 @@ const Team = () => {
       )}
     </div>
   );
+};
+
+
 
   // Component for reusable member card
   const MemberCard = ({ member, imageSize }: { member: any; imageSize: string }) => (

@@ -16,6 +16,21 @@ const carouselImages = [
   { src: "/IMG_5618.JPG", alt: "Event 2" },
   { src: "/DSC_0916.JPG", alt: "Event 3" },
   { src: "/DSC_0759.JPG", alt: "Event 4" },
+  { src: "/IMG_9385.jpg", alt: "Event 5" },
+  { src: "/sang.JPG", alt: "Event 6" },
+  { src: "/img2.jpg", alt: "Event 7" },
+  { src: "/IMG_9795.jpg", alt: "Event 8" },
+  { src: "/IMG_4801.JPG", alt: "Event 9" },
+  { src: "/IMG_3758.JPG", alt: "Event 10" },
+  { src: "/IMG_2112.jpg", alt: "Event 11" },
+  { src: "/IMG_1758.jpg", alt: "Event 12" },
+  { src: "/DSC03133.JPG", alt: "Event 13" },
+  { src: "/DSC_0991.JPG", alt: "Event 14" },
+  { src: "/DSC_0582.JPG", alt: "Event 15" },
+  { src: "/DSC_0417.JPG", alt: "Event 16" },
+  { src: "/DSC_0230.JPG", alt: "Event 17" },
+  { src: "/DSC_0229.JPG", alt: "Event 18" },
+
 ];
 
 
@@ -222,11 +237,9 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex justify-center mb-4">
-  <img 
-    src="/Kitabghar-logo.svg" 
-    alt="Kitabghar Logo" 
-    className="h-16 md:h-24 lg:h-28 w-auto object-contain"
-  />
+  <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+  Kitabghar
+</h1>
 </div>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Sangrachna Kitabghar is a unique library initiative by the Sangrachna Club. Sangrachna Kitabghar is a platform that aims to promote reading and knowledge-sharing among the community. It serves as a bridge between readers and writers, fostering a culture of continuous learning and intellectual growth. The library of the club also functions as an archive for the club's publications, chronicling the literary journey of its members and preserving their creative contributions for future generations.

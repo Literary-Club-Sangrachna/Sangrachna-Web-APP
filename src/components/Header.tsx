@@ -22,7 +22,7 @@ const Header = () => {
           <div className="flex-shrink-0">
             <NavLink to="/" className="flex items-center space-x-3">
               <img 
-                src="/lovable-uploads/159585d6-ef08-4e5d-834a-f22830de2ef4.png" 
+                src="/MainLogo.svg" 
                 alt="Sangrachna Logo" 
                 className="h-10 w-auto"
               />
