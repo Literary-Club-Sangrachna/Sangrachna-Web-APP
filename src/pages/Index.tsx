@@ -287,7 +287,7 @@ const Index = () => {
             </Card>
           </div>
           
-           <div className="text-center mt-8">
+           {/* <div className="text-center mt-8">
             <Button 
               variant="outline" 
               size="lg"
@@ -296,7 +296,7 @@ const Index = () => {
               Read More Poems
               <PenTool className="ml-2 h-4 w-4" />
             </Button>
-          </div>
+          </div> */}
         </div>
       </section>
 
