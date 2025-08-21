@@ -102,7 +102,7 @@ const Index = () => {
                 size="lg" 
                 variant="secondary" 
                 className="text-primary"
-                onClick={() => navigate('/events')}
+                onClick={() => navigate('/about')}
               >
                 Explore Our Journey
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -326,9 +326,14 @@ const Index = () => {
       className="w-full h-full object-cover"
     />
   ) : (
-    <span className="text-3xl font-bold text-primary">{president.name.charAt(0)}</span>
+    <img
+      src="/TEAM/ADITYA.jpg"
+      alt="Aditya"
+      className="w-full h-full object-cover"
+    />
   )}
 </div>
+
 
                   
                   <div>
