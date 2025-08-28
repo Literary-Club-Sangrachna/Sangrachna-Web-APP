@@ -1,22 +1,38 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMagazineOpen, setIsMagazineOpen] = useState(false); // dropdown state
 
-  // Add magazine with external link
-  const navigation = [
+  // Navigation items
+  const navigation: (
+    | { name: string; href: string }
+    | { name: string; dropdown: { name: string; href: string }[] }
+  )[] = [
     { name: "Home", href: "/" },
-    {name: "About", href: "/about" },
+    { name: "About", href: "/about" },
     { name: "Events", href: "/events" },
     { name: "Kitabghar", href: "/library" },
     { name: "Core Team", href: "/team" },
     {
       name: "Magazine",
-      href: "https://www.dropbox.com/scl/fi/artkada9wsvzhe6f0fidg/Cover-page-urvashi.pdf?rlkey=tpxomb9x55haid42pp7wukur6&st=k5i570jg&dl=0", 
-      external: true,
+      dropdown: [
+        {
+          name: "Session 2025",
+          href: "https://noidainstituteofengtech-my.sharepoint.com/personal/sangrachna_niet_co_in/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fsangrachna%5Fniet%5Fco%5Fin%2FDocuments%2FSangam%20Magazine%2FSangam%20Annual%20MAgazine%2Epdf&parent=%2Fpersonal%2Fsangrachna%5Fniet%5Fco%5Fin%2FDocuments%2FSangam%20Magazine&ga=1",
+        },
+        {
+          name: "Session 2024",
+          href: "https://www.niet.co.in/uploads/images/676fadb0734241735372208.pdf",
+        },
+        {
+          name: "Session 2023",
+          href: "https://www.niet.co.in/uploads/images/676fad42bfa351735372098.pdf",
+        },
+      ],
     },
   ];
 
@@ -36,18 +52,31 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8 relative">
             {navigation.map((item) =>
-              item.external ? (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary"
-                >
-                  {item.name}
-                </a>
+              "dropdown" in item ? (
+                <div key={item.name} className="relative group">
+                  <button className="flex items-center px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary">
+                    {item.name}
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                  </button>
+                  {/* Dropdown */}
+                  <div className="absolute left-0 mt-2 hidden w-40 rounded-md shadow-lg bg-background border border-border group-hover:block">
+                    <div className="py-1">
+                      {item.dropdown.map((sub) => (
+                        <a
+                          key={sub.name}
+                          href={sub.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block px-4 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-primary"
+                        >
+                          {sub.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               ) : (
                 <NavLink
                   key={item.name}
@@ -84,17 +113,36 @@ const Header = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border">
               {navigation.map((item) =>
-                item.external ? (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-primary hover:bg-accent"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.name}
-                  </a>
+                "dropdown" in item ? (
+                  <div key={item.name}>
+                    <button
+                      onClick={() => setIsMagazineOpen(!isMagazineOpen)}
+                      className="flex w-full items-center justify-between px-3 py-2 text-base font-medium text-muted-foreground hover:text-primary hover:bg-accent"
+                    >
+                      {item.name}
+                      <ChevronDown
+                        className={`ml-2 h-4 w-4 transform transition-transform ${
+                          isMagazineOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    {isMagazineOpen && (
+                      <div className="pl-6 space-y-1">
+                        {item.dropdown.map((sub) => (
+                          <a
+                            key={sub.name}
+                            href={sub.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block px-3 py-2 text-sm text-muted-foreground hover:text-primary hover:bg-accent"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {sub.name}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ) : (
                   <NavLink
                     key={item.name}
