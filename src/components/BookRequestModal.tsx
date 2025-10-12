@@ -33,6 +33,16 @@ const BookRequestModal = ({ open, onOpenChange, book }: BookRequestModalProps) =
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
+  const ist = new Date().toLocaleString("en-IN", {
+  timeZone: "Asia/Kolkata",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hour12: true
+});
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!book || !preferredDueDate) return;
@@ -40,13 +50,18 @@ const BookRequestModal = ({ open, onOpenChange, book }: BookRequestModalProps) =
     setLoading(true);
     try {
       const { error } = await supabase
-        .from('book_requests')
-        .insert({
-          book_id: book.id,
-          user_name: formData.studentName,
-          user_email: formData.email,
-          notes: `Mobile: ${formData.mobileNo}, Academic Year: ${formData.academicYear}, Roll No: ${formData.rollNo}, Preferred Due Date: ${preferredDueDate.toISOString().split('T')[0]}`,
-        });
+  .from('book_requests')
+  .insert({
+    book_id: book.id,
+    user_name: formData.studentName,
+    user_email: formData.email,
+    mobile_no: formData.mobileNo,
+    academic_year: formData.academicYear,
+    roll_no: formData.rollNo,
+    preferred_due_date: preferredDueDate.toISOString().split('T')[0],
+    notes: `Requested on: ${ist} (IST)`,// or keep as extra info if needed
+  });
+
 
       if (error) throw error;
 
